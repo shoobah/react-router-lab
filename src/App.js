@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router'
+import { Router, Route, Link, Redirect, IndexRoute, hashHistory } from 'react-router'
 
 const Outer = (props) =>
     <div>
@@ -21,6 +21,7 @@ const Links = () => (
     <nav>
         <Link activeClassName="active" to="/">Home</Link>
         <Link activeClassName="active" to="/about">About</Link>
+        <Link activeClassName="active" to="/about-us">About Us</Link>
         <Link activeClassName="active" to="/contact">Contact</Link>
         <Link activeClassName="active" to="/other">Other</Link>
         <Link to={{pathname: '/other', query: {message: 'Programmatic message'}}}>Test</Link>
@@ -39,6 +40,7 @@ class App extends React.Component {
                     <Route path="about" component={About}></Route>
                     <Route path="contact" component={Contact}></Route>
                     <Route path="/other" components={{ header: Other, body: OtherBody }}></Route>
+                    <Redirect from="/about-us" to="/about"></Redirect>
                 </Route>
             </Router>
         )
